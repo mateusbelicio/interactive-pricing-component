@@ -1,0 +1,22 @@
+{
+  "name": "interactive-pricing-component",
+  "description": "Design preview for the Interactive pricing component coding challenge",
+  "version": "1.0.0",
+  "scripts": {
+    "compile:sass": "sass sass/main.scss css/style.css",
+    "watch:sass": "sass sass/main.scss css/style.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mateusbelicio/interactive-pricing-component.git"
+  },
+  "author": "Mateus Belicio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mateusbelicio/interactive-pricing-component/issues"
+  },
+  "homepage": "https://github.com/mateusbelicio/interactive-pricing-component",
+  "devDependencies": {
+    "sass": "^1.57.1"
+  }
+}

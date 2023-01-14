@@ -1,0 +1,26 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the button component.
+// -----------------------------------------------------------------------------
+
+@use '../abstracts/' as *;
+
+.btn {
+  background-color: color('neutral', 700);
+  border-radius: to-rem(32);
+  border: none;
+  color: color('neutral', 500);
+  font-weight: 600;
+  padding: to-rem(14) to-rem(48);
+  font-size: to-rem(11);
+
+  margin-top: to-rem(32);
+
+  &:hover {
+    color: color('neutral', 100);
+    cursor: pointer;
+  }
+
+  @include breakpoint('small') {
+    margin-top: 0;
+  }
+}

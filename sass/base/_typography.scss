@@ -1,0 +1,39 @@
+/**
+ * Basic typography style for copy text
+ */
+
+@use '../abstracts/' as *;
+
+body {
+  font-size: to-rem(12);
+  font-family: $ff-primary;
+  color: color('neutral', 600);
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.7;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.1;
+}
+
+.h--1 {
+  font-size: clamp(to-rem(20), to-view-width(38), to-rem(28));
+  font-weight: 800;
+  color: color('neutral', 700);
+  margin-bottom: to-rem(10);
+}
+
+.h--2 {
+  font-size: clamp(to-rem(12), to-view-width(16), to-rem(14));
+  text-transform: uppercase;
+  letter-spacing: calc(14 * 0.01em);
+  font-weight: 800;
+}
+
+input,
+input::placeholder {
+  font-size: clamp(to-rem(12), to-view-width(14), to-rem(16));
+}

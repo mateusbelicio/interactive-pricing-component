@@ -1,0 +1,479 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap");
+:root {
+  color-scheme: light;
+  --clr-primary-400: hsl(174deg, 77%, 80%);
+  --clr-primary-500: hsl(174deg, 86%, 45%);
+  --clr-neutral-100: hsl(0deg, 0%, 100%);
+  --clr-neutral-200: hsl(230deg, 100%, 99%);
+  --clr-neutral-300: hsl(224deg, 65%, 95%);
+  --clr-neutral-400: hsl(223deg, 50%, 87%);
+  --clr-neutral-500: hsl(226deg, 100%, 87%);
+  --clr-neutral-600: hsl(225deg, 20%, 60%);
+  --clr-neutral-700: hsl(227deg, 35%, 25%);
+  --clr-accent-300: hsl(14deg, 92%, 95%);
+  --clr-accent-400: hsl(15deg, 100%, 70%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: url("../images/bg-pattern.svg") no-repeat;
+  background-size: cover;
+  background-position: 0 -50vh;
+  background-color: var(--clr-primary-200);
+  display: grid;
+  justify-items: center;
+  align-items: start;
+  min-height: 100vh;
+  padding-block: 3rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font: inherit;
+}
+
+input:focus-visible {
+  outline: none;
+}
+
+/* === range theme and appearance === */
+input[type=range] {
+  font-size: 1.5rem;
+  width: 80%;
+}
+
+input[type=range] {
+  color: var(--clr-primary-500);
+  --thumb-height: 2.5rem;
+  --progress-color: var(--clr-primary-400);
+  --track-height: 0.5rem;
+  --track-color: var(--clr-neutral-300);
+  --clip-edges: 0.125em;
+}
+
+/* === range commons === */
+input[type=range] {
+  position: relative;
+  background: transparent;
+  overflow: hidden;
+}
+input[type=range]:active {
+  cursor: grabbing;
+}
+input[type=range]:disabled {
+  filter: grayscale(1);
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* === WebKit specific styles === */
+input[type=range], input[type=range]::-webkit-slider-runnable-track, input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  transition: all ease 100ms;
+  height: var(--thumb-height);
+}
+input[type=range]::-webkit-slider-runnable-track, input[type=range]::-webkit-slider-thumb {
+  position: relative;
+}
+input[type=range]:focus-visible::-webkit-slider-thumb {
+  transform: scale(0.95);
+}
+input[type=range]::-webkit-slider-thumb {
+  --thumb-radius: calc((var(--thumb-height) * 0.5) - 1px);
+  --clip-top: calc((var(--thumb-height) - var(--track-height)) * 0.5 - 0.5px);
+  --clip-bottom: calc(var(--thumb-height) - var(--clip-top));
+  --clip-further: calc(100% + 1px);
+  --box-fill: calc(-100vmax - var(--thumb-width, var(--thumb-height))) 0 0 100vmax currentColor;
+  width: var(--thumb-width, var(--thumb-height));
+  background: url(../images/icon-slider.svg) no-repeat center;
+  background-color: currentColor;
+  box-shadow: var(--box-fill);
+  border-radius: var(--thumb-width, var(--thumb-height));
+  filter: brightness(100%);
+  clip-path: polygon(100% -1px, var(--clip-edges) -1px, 0 var(--clip-top), -100vmax var(--clip-top), -100vmax var(--clip-bottom), 0 var(--clip-bottom), var(--clip-edges) 100%, var(--clip-further) var(--clip-further));
+}
+input[type=range]:hover::-webkit-slider-thumb {
+  cursor: grab;
+}
+input[type=range]:focus-visible::-webkit-slider-thumb, input[type=range]:active::-webkit-slider-thumb {
+  background-color: #0ca697;
+  cursor: grabbing;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  background: linear-gradient(var(--track-color) 0 0) scroll no-repeat center/100% calc(var(--track-height) + 1px);
+}
+input[type=range]:disabled::-webkit-slider-thumb {
+  cursor: not-allowed;
+}
+
+/* === Firefox specific styles === */
+input[type=range], input[type=range]::-moz-range-track, input[type=range]::-moz-range-thumb {
+  appearance: none;
+  transition: all ease 100ms;
+  height: var(--thumb-height);
+}
+input[type=range]::-moz-range-track, input[type=range]::-moz-range-thumb, input[type=range]::-moz-range-progress {
+  background: rgba(255, 255, 255, 0);
+}
+input[type=range]:focus-visible::-moz-range-thumb, input[type=range]:active::-moz-range-thumb {
+  background-color: #0ca697;
+  overflow: hidden;
+}
+input[type=range]::-moz-range-thumb {
+  background: url(../images/icon-slider.svg) no-repeat center;
+  background-color: currentColor;
+  border: 0;
+  width: var(--thumb-width, var(--thumb-height));
+  border-radius: var(--thumb-width, var(--thumb-height));
+  cursor: grab;
+}
+input[type=range]:active::-moz-range-thumb {
+  cursor: grabbing;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  background: var(--track-color);
+}
+input[type=range]::-moz-range-progress {
+  appearance: none;
+  background: var(--progress-color);
+  transition-delay: 30ms;
+}
+input[type=range]::-moz-range-track, input[type=range]::-moz-range-progress {
+  height: calc(var(--track-height) + 1px);
+  border-radius: var(--track-height);
+}
+input[type=range]::-moz-range-thumb, input[type=range]::-moz-range-progress {
+  filter: brightness(100%);
+}
+input[type=range]:hover::-moz-range-thumb, input[type=range]:hover::-moz-range-progress {
+  filter: brightness(100%);
+}
+input[type=range]:active::-moz-range-thumb, input[type=range]:active::-moz-range-progress {
+  filter: brightness(100%);
+}
+input[type=range]:disabled::-moz-range-thumb {
+  cursor: not-allowed;
+}
+
+/**
+ * Clear inner floats
+ */
+.clearfix::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+/**
+ * Main content containers
+ * 1. Make the container full-width with a maximum width
+ * 2. Center it in the viewport
+ * 3. Leave some space on the edges, especially valuable on small screens
+ */
+.container {
+  width: min(33.75rem, 100% - 2 * 1rem);
+  margin-inline: auto;
+  min-width: 20.8rem;
+}
+
+.container--no-padding {
+  padding-inline: 0;
+}
+
+/**
+ * Hide text while making it readable for screen readers
+ * 1. Needed in WebKit-based browsers because of an implementation bug;
+ *    See: https://code.google.com/p/chromium/issues/detail?id=457146
+ */
+.hide-text {
+  overflow: hidden;
+  padding: 0; /* 1 */
+  text-indent: 101%;
+  white-space: nowrap;
+}
+
+/**
+ * Hide element while making it readable for screen readers
+ * Shamelessly borrowed from HTML5Boilerplate:
+ * https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133
+ */
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/**
+ * Basic typography style for copy text
+ */
+body {
+  font-size: 0.75rem;
+  font-family: "Manrope", sans-serif;
+  color: var(--clr-neutral-600);
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.7;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.1;
+}
+
+.h--1 {
+  font-size: clamp(1.25rem, 4.9479166667vw, 1.75rem);
+  font-weight: 800;
+  color: var(--clr-neutral-700);
+  margin-bottom: 0.625rem;
+}
+
+.h--2 {
+  font-size: clamp(0.75rem, 2.0833333333vw, 0.875rem);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 800;
+}
+
+input,
+input::placeholder {
+  font-size: clamp(0.75rem, 1.8229166667vw, 1rem);
+}
+
+.header {
+  margin-bottom: 3.625rem;
+  position: relative;
+  align-self: end;
+}
+.header::after {
+  content: "";
+  background: url("../images/pattern-circles.svg") no-repeat;
+  background-position: center;
+  background-size: contain;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 9.375rem;
+  aspect-ratio: 1;
+  z-index: -1;
+}
+.header__description {
+  font-size: clamp(0.8125rem, 2.0833333333vw, 0.9375rem);
+}
+.header__description span {
+  display: block;
+}
+@media screen and (min-width: 34em) {
+  .header__description span {
+    display: inline;
+  }
+}
+
+.btn {
+  background-color: var(--clr-neutral-700);
+  border-radius: 2rem;
+  border: none;
+  color: var(--clr-neutral-500);
+  font-weight: 600;
+  padding: 0.875rem 3rem;
+  font-size: 0.6875rem;
+  margin-top: 2rem;
+}
+.btn:hover {
+  color: var(--clr-neutral-100);
+  cursor: pointer;
+}
+@media screen and (min-width: 34em) {
+  .btn {
+    margin-top: 0;
+  }
+}
+
+.billing {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+}
+.billing__text:first-of-type {
+  text-align: right;
+}
+.billing__text:last-of-type {
+  text-align: left;
+}
+.billing__btn {
+  height: 1.375rem;
+  aspect-ratio: 2/1;
+  border-radius: 2rem;
+  background-color: var(--clr-neutral-400);
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.billing__btn:hover {
+  background-color: var(--clr-primary-400);
+}
+.billing__btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  transition: all 0.1s;
+  display: block;
+  height: 0.9375rem;
+  width: 0.9375rem;
+  background-color: var(--clr-neutral-100);
+  border-radius: 5rem;
+}
+.billing__btn:active::after {
+  width: 1.5rem;
+}
+.billing__btn[data-active=true]::after {
+  right: 10%;
+  left: auto;
+}
+.billing__input {
+  appearance: none;
+}
+.billing__discount {
+  font-size: 0.6875rem;
+  font-weight: 800;
+  display: inline-block;
+  border-radius: 1.5rem;
+  background-color: var(--clr-accent-300);
+  color: var(--clr-accent-400);
+  padding: 0.0625rem 0.375rem;
+  margin-left: 0.125rem;
+}
+.billing__discount::before {
+  content: "-";
+}
+@media screen and (min-width: 34em) {
+  .billing__discount::before {
+    content: none;
+  }
+}
+@media screen and (min-width: 34em) {
+  .billing__discount::after {
+    content: " discount";
+  }
+}
+
+.divider {
+  background-color: var(--clr-neutral-300);
+  display: block;
+  margin-block: 2rem;
+  height: 1px;
+}
+
+.pricing {
+  background-color: var(--clr-neutral-100);
+  padding-block: 2rem;
+  border-radius: 0.625rem;
+  box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.15);
+}
+@media screen and (min-width: 34em) {
+  .pricing {
+    padding-inline: 2rem;
+  }
+}
+.pricing__header {
+  display: grid;
+  row-gap: 2rem;
+  justify-items: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+@media screen and (min-width: 34em) {
+  .pricing__header {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 34em) {
+  .pricing__title {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+  }
+}
+.pricing__price {
+  font-size: clamp(0.875rem, 2.0833333333vw, 1rem);
+  letter-spacing: 1px;
+  font-weight: 600;
+  display: flex;
+  gap: 0.625rem;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+@media screen and (min-width: 34em) {
+  .pricing__price {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+  }
+}
+@media screen and (min-width: 34em) {
+  .pricing__slide-input {
+    grid-column: span 2;
+  }
+}
+.pricing__value {
+  letter-spacing: -0.5px;
+  color: var(--clr-neutral-700);
+  font-weight: 800;
+  font-size: clamp(2rem, 4.1666666667vw, 2.375rem);
+}
+.pricing__value::before {
+  content: "$";
+}
+.pricing__features {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+@media screen and (min-width: 34em) {
+  .pricing__features {
+    grid-auto-flow: column;
+    justify-content: space-between;
+  }
+}
+.pricing__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.375rem;
+  list-style: none;
+}
+@media screen and (min-width: 34em) {
+  .pricing__list {
+    align-items: flex-start;
+  }
+}
+.pricing__feature p::before {
+  content: url("../images/icon-check.svg");
+  margin-right: 1rem;
+}
+
+/*# sourceMappingURL=style.css.map */

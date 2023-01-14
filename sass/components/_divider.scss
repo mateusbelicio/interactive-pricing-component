@@ -1,0 +1,12 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the divider component.
+// -----------------------------------------------------------------------------
+
+@use '../abstracts/' as *;
+
+.divider {
+  background-color: color('neutral', 300);
+  display: block;
+  margin-block: to-rem(32);
+  height: 1px;
+}

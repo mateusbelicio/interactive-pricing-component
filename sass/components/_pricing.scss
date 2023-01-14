@@ -1,0 +1,100 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the pricing component.
+// -----------------------------------------------------------------------------
+
+@use '../abstracts/' as *;
+
+.pricing {
+  background-color: color('neutral', 100);
+  padding-block: to-rem(32);
+  border-radius: to-rem(10);
+  box-shadow: 0 to-rem(10) to-rem(20) rgba(0, 0, 0, 0.15);
+
+  @include breakpoint('small') {
+    padding-inline: to-rem(32);
+  }
+
+  &__header {
+    display: grid;
+    row-gap: to-rem(32);
+    justify-items: center;
+    align-items: center;
+    margin-bottom: to-rem(32);
+
+    @include breakpoint('small') {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__title {
+    @include breakpoint('small') {
+      grid-column: 1;
+      grid-row: 1;
+      justify-self: start;
+    }
+  }
+
+  &__price {
+    font-size: clamp(to-rem(14), to-view-width(16), to-rem(16));
+    letter-spacing: 1px;
+    font-weight: 600;
+    display: flex;
+    gap: to-rem(10);
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+
+    @include breakpoint('small') {
+      grid-column: 2;
+      grid-row: 1;
+      justify-self: end;
+    }
+  }
+
+  &__slide-input {
+    @include breakpoint('small') {
+      grid-column: span 2;
+    }
+  }
+
+  &__value {
+    letter-spacing: -0.5px;
+    color: color('neutral', 700);
+    font-weight: 800;
+    font-size: clamp(to-rem(32), to-view-width(32), to-rem(38));
+
+    &::before {
+      content: '$';
+    }
+  }
+
+  &__features {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+
+    @include breakpoint('small') {
+      grid-auto-flow: column;
+      justify-content: space-between;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: to-rem(6);
+    list-style: none;
+
+    @include breakpoint('small') {
+      align-items: flex-start;
+    }
+  }
+
+  &__feature {
+    p::before {
+      content: url('../images/icon-check.svg');
+      margin-right: to-rem(16);
+    }
+  }
+}

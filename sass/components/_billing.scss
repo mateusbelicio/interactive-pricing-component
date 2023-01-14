@@ -1,0 +1,90 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the billing component.
+// -----------------------------------------------------------------------------
+
+@use '../abstracts/' as *;
+
+.billing {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  justify-content: center;
+  align-items: center;
+  gap: to-rem(12);
+
+  &__text {
+    &:first-of-type {
+      text-align: right;
+    }
+
+    &:last-of-type {
+      text-align: left;
+    }
+  }
+
+  &__btn {
+    height: to-rem(22);
+    aspect-ratio: 2 / 1;
+    border-radius: to-rem(32);
+    background-color: color('neutral', 400);
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: color('primary', 400);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      transform: translateY(-50%);
+      transition: all 0.1s;
+
+      display: block;
+      height: to-rem(15);
+      width: to-rem(15);
+      background-color: color('neutral', 100);
+      border-radius: to-rem(80);
+    }
+
+    &:active::after {
+      width: to-rem(24);
+    }
+
+    &[data-active='true']::after {
+      right: 10%;
+      left: auto;
+    }
+  }
+
+  &__input {
+    appearance: none;
+  }
+
+  &__discount {
+    &::before {
+      content: '-';
+
+      @include breakpoint('small') {
+        content: none;
+      }
+    }
+
+    &::after {
+      @include breakpoint('small') {
+        content: ' discount';
+      }
+    }
+
+    font-size: to-rem(11);
+    font-weight: 800;
+    display: inline-block;
+    border-radius: to-rem(24);
+    background-color: color('accent', 300);
+    color: color('accent');
+    padding: to-rem(1) to-rem(6);
+    margin-left: to-rem(2);
+  }
+}
