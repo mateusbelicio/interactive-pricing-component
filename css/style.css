@@ -26,7 +26,7 @@ body {
   background: url("../images/bg-pattern.svg") no-repeat;
   background-size: cover;
   background-position: 0 -50vh;
-  background-color: var(--clr-primary-200);
+  background-color: var(--clr-neutral-200);
   display: grid;
   justify-items: center;
   align-items: start;
@@ -61,6 +61,7 @@ input[type=range] {
   --track-height: 0.5rem;
   --track-color: var(--clr-neutral-300);
   --clip-edges: 0.125em;
+  --shadow-hover: 0 0 1rem var(--progress-color);
 }
 
 /* === range commons === */
@@ -95,7 +96,8 @@ input[type=range]::-webkit-slider-thumb {
   --clip-top: calc((var(--thumb-height) - var(--track-height)) * 0.5 - 0.5px);
   --clip-bottom: calc(var(--thumb-height) - var(--clip-top));
   --clip-further: calc(100% + 1px);
-  --box-fill: calc(-100vmax - var(--thumb-width, var(--thumb-height))) 0 0 100vmax currentColor;
+  --box-fill: calc(-100vmax - var(--thumb-width, var(--thumb-height))) 0 0 100vmax
+    var(--progress-color);
   width: var(--thumb-width, var(--thumb-height));
   background: url(../images/icon-slider.svg) no-repeat center;
   background-color: currentColor;
@@ -302,6 +304,10 @@ input::placeholder {
   color: var(--clr-neutral-100);
   cursor: pointer;
 }
+.btn:focus-visible {
+  outline: 0.125rem dashed var(--clr-neutral-600);
+  outline-offset: 0.125rem;
+}
 @media screen and (min-width: 34em) {
   .btn {
     margin-top: 0;
@@ -330,7 +336,7 @@ input::placeholder {
   cursor: pointer;
   transition: background-color 0.3s;
 }
-.billing__btn:hover {
+.billing__btn:hover, .billing__btn:focus-within {
   background-color: var(--clr-primary-400);
 }
 .billing__btn::after {

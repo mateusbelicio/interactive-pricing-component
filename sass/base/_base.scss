@@ -16,7 +16,7 @@ body {
   background: url('../images/bg-pattern.svg') no-repeat;
   background-size: cover;
   background-position: 0 -50vh;
-  background-color: color('primary', 200);
+  background-color: color('neutral', 200);
 
   display: grid;
   justify-items: center;
@@ -54,6 +54,7 @@ input[type='range'] {
   --track-height: #{to-rem(8)};
   --track-color: #{color('neutral', 300)};
   --clip-edges: 0.125em;
+  --shadow-hover: 0 0 1rem var(--progress-color);
 }
 
 /* === range commons === */
@@ -97,7 +98,8 @@ input[type='range'] {
     --clip-top: calc((var(--thumb-height) - var(--track-height)) * 0.5 - 0.5px);
     --clip-bottom: calc(var(--thumb-height) - var(--clip-top));
     --clip-further: calc(100% + 1px);
-    --box-fill: calc(-100vmax - var(--thumb-width, var(--thumb-height))) 0 0 100vmax currentColor;
+    --box-fill: calc(-100vmax - var(--thumb-width, var(--thumb-height))) 0 0 100vmax
+      var(--progress-color);
 
     width: var(--thumb-width, var(--thumb-height));
     background: url(../images/icon-slider.svg) no-repeat center;

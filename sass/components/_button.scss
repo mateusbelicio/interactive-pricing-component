@@ -20,6 +20,11 @@
     cursor: pointer;
   }
 
+  &:focus-visible {
+    outline: to-rem(2) dashed color('neutral', 600);
+    outline-offset: to-rem(2);
+  }
+
   @include breakpoint('small') {
     margin-top: 0;
   }

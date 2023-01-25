@@ -30,7 +30,8 @@
     cursor: pointer;
     transition: background-color 0.3s;
 
-    &:hover {
+    &:hover,
+    &:focus-within {
       background-color: color('primary', 400);
     }
 
